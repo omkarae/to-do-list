@@ -12,8 +12,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 app.get("/",function(req,res){
-
-  let day = date.getDate();
+  const today = new Date();
+  const options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  };
+  let day = today.toLocaleDateString("en-US", options);
 
   res.render("list", {listTitle: day, newItems: items});
 })

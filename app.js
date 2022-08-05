@@ -45,6 +45,6 @@ app.post("/work",function(req,res){
   workItems.push(item);
   res.redirect("/work");
 });
-app.listen(process.env.PORT || 5000,function(){
+app.listen(process.env.PORT || 3000,function(){
   console.log("Server started on port 3000");
 });

@@ -4,15 +4,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-
+require("dotenv").config();
 const app = express();
 
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-const password = encodeURIComponent("Omkarae@07");
-const uri = `mongodb+srv://omkarae:${password}@cluster0.xoulne9.mongodb.net/?retryWrites=true&w=majority` 
+
+const uri = process.env.DB_URL;
 mongoose.connect(uri, {useNewUrlParser: true});
 
 const itemsSchema = {
